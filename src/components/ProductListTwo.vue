@@ -7,11 +7,13 @@
     <span class="price">${{product.price}}</span>
     </li>
   </ul>
+  <button v-on:click="reducePrice">Reduce Price</button>
 </div>
 </template>
 
 <script>
 export default {
+  strict: true
   computed: {
     products(){
       return this.$store.state.products;
@@ -30,7 +32,12 @@ export default {
     }
   },
   methods: {
-
+reducePrice: function(){
+  /*this.$store.state.products.forEach(product => {
+    product.price -= 1;
+  })*/
+  this.$store.commit('reducePrice'); // commit reducePrice mutation in store.js, button "reducePrice" line 10 fires this.
+}
   }
 }
 </script>
